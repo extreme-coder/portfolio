@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------- */
+/* Design tokens — "Modernist Precision"                                       */
+/* Swiss/international-style grid, monochrome surface, single cyan accent.      */
+/* -------------------------------------------------------------------------- */
+
+@theme {
+  /* Surfaces, from deepest to raised */
+  --color-surface-lowest: #0e0e0e;
+  --color-surface: #131313;
+  --color-surface-low: #1b1b1b;
+  --color-surface-raised: #1f1f1f;
+  --color-surface-high: #2a2a2a;
+
+  /* Ink — all pass WCAG AA on --color-surface */
+  --color-primary: #ffffff; /* 18.4:1 */
+  --color-ink: #e2e2e2; /* 13.9:1 */
+  --color-ink-muted: #c4c7c8; /* 11.1:1 */
+  --color-ink-dim: #8e9192; /*  5.9:1 */
+
+  --color-on-primary: #2f3131;
+  --color-line: #444748;
+  --color-line-strong: #8e9192;
+
+  /* Accent — cyan. `on-accent` is the darkest pairing (9.2:1 on accent). */
+  --color-accent: #00eefc;
+  --color-accent-dim: #00dbe9;
+  --color-on-accent: #00363a;
+
+  /* Type */
+  --font-display: var(--font-hanken-grotesk), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+  --font-label: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: clamp(2.75rem, 9vw, 7.5rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.04em;
+  --text-display--font-weight: 800;
+
+  --text-display-sm: clamp(2rem, 5.5vw, 4.5rem);
+  --text-display-sm--line-height: 0.96;
+  --text-display-sm--letter-spacing: -0.03em;
+  --text-display-sm--font-weight: 700;
+
+  --text-headline: clamp(1.5rem, 2.4vw, 2rem);
+  --text-headline--line-height: 1.25;
+  --text-headline--letter-spacing: -0.01em;
+  --text-headline--font-weight: 600;
+
+  --text-title: clamp(1.25rem, 1.8vw, 1.5rem);
+  --text-title--line-height: 1.3;
+  --text-title--letter-spacing: -0.01em;
+  --text-title--font-weight: 600;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+
+  --text-label: 0.875rem;
+  --text-label--line-height: 1.25rem;
+  --text-label--letter-spacing: 0.05em;
+  --text-label--font-weight: 500;
+
+  --text-micro: 0.75rem;
+  --text-micro--line-height: 1rem;
+  --text-micro--letter-spacing: 0.08em;
+  --text-micro--font-weight: 500;
+
+  /* Motion — the type never moves. A mask edge travels across it instead, so
+     the swap reads as a graphic wipe rather than as an object in motion.
+     Linear timing on purpose: eased curves imply weight and momentum. */
+  --animate-word-in: word-in 240ms linear;
+  /* Same wipe, longer only because the hero headline is several times wider —
+     the edge should travel at a consistent speed, not for a fixed time. */
+  --animate-title-in: word-in 620ms linear;
+
+  @keyframes word-in {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  /* Layout */
+  --container-page: 90rem; /* 1440px */
+
+  /* This design is rigid on purpose: no rounded corners anywhere. */
+  --radius-none: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Base                                                                        */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --page-edge: 1.25rem;
+  color-scheme: dark;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --page-edge: 2.5rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchor targets clear of the sticky header. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body-lg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* Hairlines stay hairlines on high-DPI displays. */
+  hr {
+    border-color: var(--color-line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Utilities                                                                   */
+/* -------------------------------------------------------------------------- */
+
+/** Page gutter — 20px on mobile, 40px from the `md` breakpoint up. */
+@utility px-edge {
+  padding-inline: var(--page-edge);
+}
+
+/** The 12/8/4-column Swiss grid the whole layout hangs from. */
+@utility swiss-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+
+  @media (min-width: 48rem) {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+/** Uppercase, letterspaced label type used for every piece of chrome. */
+@utility label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--text-label--letter-spacing);
+  font-weight: var(--text-label--font-weight);
+  text-transform: uppercase;
+}
+
+@utility label-micro {
+  font-family: var(--font-label);
+  font-size: var(--text-micro);
+  line-height: var(--text-micro--line-height);
+  letter-spacing: var(--text-micro--letter-spacing);
+  font-weight: var(--text-micro--font-weight);
+  text-transform: uppercase;
+}

@@ -1,0 +1,166 @@
+{
+  "basics": {
+    "name": "Aryan Singh",
+    "role": "Developer",
+    "headline": "Aryan Singh / Developer.",
+    "location": "Vancouver, BC",
+    "email": "aryan.singh.lamba@gmail.com",
+    "phone": "(778) 251-2074",
+    "resumeUrl": "/Resume_AryanSingh.pdf",
+    "summary": "I spent high school building full-stack apps, APIs, and Redis caches, and started UBC knowing what it means to ship something people depend on.",
+    "about": [
+      "Now I'm studying Cognitive Systems and splitting my time between full-stack work and machine learning. Most recently that meant building and evaluating a paradigm to make medical research accessible.",
+      "Everything I create has someone specific in mind: a patient reading their own diagnosis, a band listening back to a rehearsal, someone deciding where a turbine goes. Solving real problems for real people is my #1 priority."
+    ],
+    "profiles": [
+      {
+        "network": "GitHub",
+        "handle": "extreme-coder",
+        "url": "https://github.com/extreme-coder"
+      },
+      {
+        "network": "LinkedIn",
+        "handle": "aryan-singh-b49627247",
+        "url": "https://www.linkedin.com/in/aryan-singh-b49627247"
+      },
+      {
+        "network": "Email",
+        "handle": "aryan.singh.lamba@gmail.com",
+        "url": "mailto:aryan.singh.lamba@gmail.com"
+      }
+    ]
+  },
+  "education": [
+    {
+      "id": "ubc",
+      "institution": "University of British Columbia",
+      "credential": "BSc Cognitive Systems",
+      "focus": "Computational Intelligence and Design",
+      "location": "Vancouver, BC",
+      "start": "2024-09",
+      "end": null
+    }
+  ],
+  "experience": [
+    {
+      "id": "medivizor",
+      "organization": "Medivizor",
+      "role": "ML Engineer Intern",
+      "location": "Remote",
+      "start": "2024-06",
+      "end": "2025-04",
+      "summary": "Medivizor sends patients plain-language summaries of research relevant to their diagnosis. I worked on the model that drafts those summaries and on the evaluation that decided whether a draft was good enough to send.",
+      "highlights": [
+        "Trained GPT-4o for patient-friendly medical research summarization using curated article-summary pairs aligned to Medivizor guidelines",
+        "Designed and ran a head-to-head evaluation on real research papers; measured Cosine Similarity, BLEU/ROUGE, BERTScore, METEOR, and Flesch-Kincaid readability",
+        "Built a data pipeline that compared model outputs against expert summaries and source papers, and visualized the results"
+      ],
+      "tags": ["Python", "GPT-4o", "LLM Evaluation", "NLP", "Data Pipelines"],
+      "image": {
+        "src": "/images/medivizor-evaluation.png",
+        "alt": "Three box plots comparing the fine-tuned, general-purpose, and category-specific models on article BERTScore, METEOR score, and reading level.",
+        "width": 1600,
+        "height": 492
+      }
+    },
+    {
+      "id": "digital-sarthi",
+      "organization": "Digital Sarthi Software Solutions",
+      "role": "Software Developer Intern",
+      "location": "Surrey, BC",
+      "start": "2022-09",
+      "end": "2024-09",
+      "summary": "A small agency building software for local businesses. Over two years I moved across the stack, from booking and payment screens to the APIs and deploy pipeline behind them.",
+      "highlights": [
+        "Built an event booking system using React, Redux, and Stripe",
+        "Developed 14 REST APIs for small-business automation using SQL, Strapi, Koa, and Google Cloud, utilized by 5 businesses",
+        "Implemented an automatic deployment pipeline through IONOS and Cloudflare",
+        "Deployed and managed GCP cloud functions"
+      ],
+      "tags": ["React", "Redux", "Node.js", "Koa", "SQL", "Stripe", "Google Cloud", "CI/CD"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "evensteven",
+      "name": "EvenSteven",
+      "tagline": "Live rehearsal mix analysis",
+      "date": "2026-03",
+      "url": "https://github.com/extreme-coder/evensteven",
+      "description": "A rehearsal mix drifts and nobody notices until they listen back. EvenSteven reads the recording and reports where the vocals got buried and which songs are sitting louder than the rest of the set.",
+      "highlights": [
+        "Built a modular C++ audio pipeline for preprocessing, segmentation, and loudness analysis",
+        "Wrote MATLAB scripts for visualization and reproducible reporting"
+      ],
+      "tags": ["C++", "Electron", "MATLAB", "Audio DSP", "Signal Processing"]
+    },
+    {
+      "id": "etyma",
+      "name": "Etyma",
+      "tagline": "Real-time etymology visualizer for English text",
+      "date": "2025-07",
+      "url": "https://github.com/extreme-coder/etyma",
+      "description": "Paste in a paragraph and Etyma colors each word by where it entered English: Latin, French, Greek, Old English. Hovering gives the route for a single word, and a chart underneath shows the balance across the whole passage.",
+      "highlights": [
+        "Built a responsive UI that makes linguistic patterns instantly scannable for learners and writers"
+      ],
+      "tags": ["TypeScript", "React", "NLP", "Data Visualization", "Linguistics"],
+      "image": {
+        "src": "/images/etyma.jpg",
+        "alt": "Etyma analyzing a sentence from Frankenstein: each word is tinted by language of origin, with a legend reading Old English 71.4 percent, Latin 23.8 percent, French 4.8 percent, and a matching pie chart.",
+        "width": 1400,
+        "height": 1548
+      }
+    },
+    {
+      "id": "windsim",
+      "name": "Windsim",
+      "tagline": "Wind turbine siting & energy output simulator",
+      "date": "2023-04",
+      "url": "https://github.com/extreme-coder/windsim",
+      "description": "Pick a point on the map and Windsim estimates how much energy a turbine would produce there, using local wind data and the turbine's power curve. It then searches nearby positions for a layout that loses less output to wake effects.",
+      "highlights": [
+        "Modeled wake losses to forecast energy output; used simulated annealing to find optimal turbine sites",
+        "Validated accuracy against 10 real wind farms, reaching an average prediction error of 1.265%",
+        "Added interactive visualizations — per-turbine and monthly output, homes powered — to drive siting decisions"
+      ],
+      "tags": ["Python", "GIS", "NumPy/SciPy", "Optimization", "Data Visualization"],
+      "image": {
+        "src": "/images/windsim.png",
+        "alt": "Windsim with two Vestas V126-3450 turbines placed on a satellite map of the Salish Sea, a monthly average power output chart, and a readout of 2,281 kWh per month — enough to power 3 homes.",
+        "width": 800,
+        "height": 485
+      }
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages & Data",
+      "items": ["Python", "C++", "JavaScript/TypeScript", "SQL", "NumPy/SciPy", "MATLAB"]
+    },
+    {
+      "category": "Back-End",
+      "items": ["Node.js", "Django", "REST APIs", "Koa", "Supabase", "Redis"]
+    },
+    {
+      "category": "Front-End",
+      "items": ["React (Hooks)", "Redux", "Electron", "HTML", "CSS"]
+    },
+    {
+      "category": "Cloud & Tools",
+      "items": ["AWS", "Google Cloud", "Docker", "Git/GitHub", "Stripe", "Cloudflare"]
+    }
+  ],
+  "awards": [
+    { "id": "ubc-cic", "title": "UBC CIC Hackathon", "result": "1st Place", "year": 2025 },
+    { "id": "nasa", "title": "NASA Space Apps Challenge", "result": "1st Place (Local)", "year": 2024 },
+    {
+      "id": "gvrsf",
+      "title": "Greater Vancouver Regional Science Fair",
+      "result": "Honorable Mention",
+      "year": 2023
+    },
+    { "id": "code-jam", "title": "Google Code Jam", "result": "Qualifier", "year": 2022 },
+    { "id": "amc", "title": "AMC", "result": "Honor Roll", "year": 2019 }
+  ]
+}
