@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aryan-singh-portfolio",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // Turning SHOW_WORK_IMAGES back on in src/lib/site.ts means next/image starts
+  // rendering again, which needs Cloudflare Images to optimise. Add:
+  //   "images": { "binding": "IMAGES" }
+  // It is left out for now so a deploy can't fail on a binding nothing uses.
+  "observability": {
+    "enabled": true
+  }
+}
