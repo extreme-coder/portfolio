@@ -82,6 +82,43 @@
   ],
   "projects": [
     {
+      "id": "kestrel",
+      "name": "Kestrel",
+      "tagline": "WebXR viewer for wind-farm wake fields",
+      "date": "2026-07",
+      "inProgress": true,
+      "url": "https://github.com/extreme-coder/kestrel",
+      "description": "Wake losses are invisible on a site map: each turbine pulls energy out of the air, and the machines behind it run on what is left. Kestrel renders that airflow as a volume you can walk through, in a headset or in a plain browser tab. Underneath it is a wind-modelling API that predicts turbine output from ERA5 reanalysis and places farms by simulated annealing.",
+      "highlights": [],
+      "tags": [
+        "TypeScript",
+        "three.js",
+        "WebXR",
+        "React",
+        "Hono",
+        "SQLite",
+        "Data Visualization"
+      ]
+    },
+    {
+      "id": "cairn",
+      "name": "Cairn",
+      "tagline": "Offline-first field data collection on Android",
+      "date": "2026-07",
+      "inProgress": true,
+      "url": "https://github.com/extreme-coder/cairn",
+      "description": "Field research happens where the signal doesn't. A coordinator publishes a versioned form, collectors fill it in offline on their own phones, and Cairn reconciles the records once a device reconnects; a retried upload cannot create a duplicate. Four roles (PI, coordinator, collector, viewer) read different slices of the same Postgres tables, enforced by row-level security rather than by client code.",
+      "highlights": [],
+      "tags": [
+        "Kotlin",
+        "Android",
+        "Room",
+        "Supabase",
+        "PostgreSQL",
+        "Offline-first"
+      ]
+    },
+    {
       "id": "evensteven",
       "name": "EvenSteven",
       "tagline": "Live rehearsal mix analysis",

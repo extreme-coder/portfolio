@@ -71,6 +71,12 @@ export interface WorkEntry {
   subtitle: string;
   /** Badge in the top-right of a card: `Jun 2024 — Apr 2025`, or `2023`. */
   period: string | null;
+  /**
+   * Still being built, so the card carries an "In progress" marker. Projects
+   * only: an ongoing *role* is already expressed by a null `end` reading
+   * "Present", and "In progress" is the wrong word for a job.
+   */
+  inProgress: boolean;
   summary: string;
   highlights: string[];
   tags: string[];
@@ -90,6 +96,7 @@ function fromExperience(item: Experience, index: number): WorkEntry {
     title: item.role,
     subtitle: `${item.organization} · ${item.location}`,
     period: formatRange(item.start, item.end),
+    inProgress: false,
     summary: item.summary,
     highlights: item.highlights,
     tags: item.tags,
@@ -107,15 +114,27 @@ function fromProject(item: Project, index: number): WorkEntry {
     kind: "project",
     title: item.name,
     subtitle: item.tagline,
-    period: item.date ? formatMonth(item.date) : null,
+    // An in-progress project's date is when it started, so it reads as an open
+    // range — the same shape a current role gets.
+    period: item.date
+      ? item.inProgress
+        ? formatRange(item.date, null)
+        : formatMonth(item.date)
+      : null,
+    inProgress: item.inProgress ?? false,
     summary: item.description,
     highlights: item.highlights,
     tags: item.tags,
     image: item.image,
     href: item.url,
+    // Unfinished work sorts above everything finished, matching ongoing roles.
     // Undated projects sort to the bottom of a date sort, but keep their resume
     // order among themselves rather than falling back to alphabetical.
-    sortKey: item.date ? monthKey(item.date) : 0,
+    sortKey: item.inProgress
+      ? Number.MAX_SAFE_INTEGER
+      : item.date
+        ? monthKey(item.date)
+        : 0,
     rank: experience.length + index,
   };
 }

@@ -30,8 +30,9 @@ const SORTS: { value: Sort; label: string }[] = [
 
 /**
  * Delay added per tag as the available/unavailable dim crosses the list. With
- * ~21 tags and a 500ms fade, the whole sweep lands around 740ms: slow enough to
- * read as a sweep, short enough not to feel sluggish.
+ * 34 tags and a 500ms fade, the whole sweep lands around 900ms: slow enough to
+ * read as a sweep, short enough not to feel sluggish. Adding tags lengthens it —
+ * past roughly 40 the stagger wants to come down.
  */
 const TAG_STAGGER_MS = 12;
 

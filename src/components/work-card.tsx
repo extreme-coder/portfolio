@@ -25,11 +25,19 @@ export function WorkCard({ entry, as: Heading = "h3", className }: WorkCardProps
         <div>
           <p
             className={cn(
-              "label mb-2",
+              "label mb-2 flex flex-wrap items-center gap-x-3 gap-y-1",
               entry.kind === "experience" ? "text-accent" : "text-primary",
             )}
           >
             {kindLabel}
+            {entry.inProgress ? (
+              // Sits with the kind label rather than in the tag row: this is a
+              // status, and the tag row is the Tech Stack facet on `/work`.
+              <span className="inline-flex items-center gap-2 text-accent">
+                <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
+                In progress
+              </span>
+            ) : null}
           </p>
           <Heading className="font-display text-headline text-primary">{entry.title}</Heading>
           <p className="mt-1 text-body-lg text-ink-muted">{entry.subtitle}</p>

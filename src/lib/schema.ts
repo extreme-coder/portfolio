@@ -73,8 +73,18 @@ const projectSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   tagline: z.string().min(1),
-  /** When it was built. `null` when the project has no single meaningful date. */
+  /**
+   * When it was built — or when it was started, if `inProgress`. `null` when the
+   * project has no single meaningful date.
+   */
   date: yearMonth.nullable(),
+  /**
+   * Still being built. Renders an "In progress" marker, turns `date` into an
+   * open-ended range, and sorts the entry above everything finished. Omit for
+   * finished work; this is deliberately not a `tags` entry, because `tags` is the
+   * Tech Stack facet on `/work`.
+   */
+  inProgress: z.boolean().optional(),
   url: z.string().url().nullable(),
   description: z.string().min(1),
   highlights: z.array(z.string().min(1)),

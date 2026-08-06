@@ -37,9 +37,6 @@ cloudflare-env.d.ts
 # typescript
 *.tsbuildinfo
 
-# local tool config — contains an API key in its permission allowlist
-.claude/settings.local.json
-
 # working notes and scratch assets, not part of the site
 HUMAN_WRITING_STYLE_GUIDE.md
 imagestoadd/
